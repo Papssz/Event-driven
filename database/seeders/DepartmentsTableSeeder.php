@@ -7,14 +7,9 @@ use App\Models\Department;
 
 class DepartmentsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        // Insert sample department data
+        
         Department::create([
             'department_name' => 'HR',
             'status' => 'active',
@@ -30,7 +25,7 @@ class DepartmentsTableSeeder extends Seeder
             'status' => 'active',
         ]);
 
-        // Add more departments as needed
+        
     }
 }
 
