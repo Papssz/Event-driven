@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AssignDesignation;
 use App\Models\Designation;
+use App\Models\Department;
 
 class AssignDesignationController extends Controller
 {
@@ -12,11 +13,15 @@ class AssignDesignationController extends Controller
     {
         // Fetch the list of designations
         $designations = Designation::all();
+        
+        // Fetch the list of departments
+        $departments = Department::all();
 
-        // Pass the designations and employee number to the view
+        // Pass the designations, employee number, and departments to the view
         return view('assign-designations.create', [
             'emp_num' => $emp_num,
             'designations' => $designations,
+            'departments' => $departments,
         ]);
     }
 

@@ -14,12 +14,23 @@
             @csrf
             
             <!-- Designation ID Dropdown -->
-            <!-- Designation ID Dropdown -->
             <div class="mb-4">
                 <label for="designation_id" class="block text-gray-700 text-sm font-bold mb-2">Designation:</label>
                 <select name="designation_id" id="designation_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     @foreach($designations as $designation)
-                        <option value="{{ $designation->id }}">{{ $designation->id }} - {{ $designation->designation_name }}</option>
+                        <option value="{{ $designation->id }}">{{ $designation->designation_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
+
+            <!-- Department ID Drowdown -->
+            <div class="mb-4">
+                <label for="department_id" class="block text-gray-700 text-sm font-bold mb-2">Department:</label>
+                <select name="department_id" id="department_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    @foreach($departments as $department)
+                        <option value="{{ $department->id }}">{{ $department->department_name }}</option>
                     @endforeach
                 </select>
             </div>

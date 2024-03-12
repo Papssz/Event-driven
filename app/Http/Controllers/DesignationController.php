@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Designation;
+use App\Models\Department;
 
 class DesignationController extends Controller
 {
@@ -15,23 +16,23 @@ class DesignationController extends Controller
 
     public function create()
     {
-        // You might need to pass some additional data to the create view, such as departments
-        return view('designations.create');
+        // Fetch the list of designations from the database
+        $designations = Designation::all();
+        
+        // Pass the designations to the view
+        return view('designations.create', ['designations' => $designations]);
     }
 
     public function store(Request $request)
     {
-        // Validate the request data
-        $request->validate([
-            'designation_name' => 'required',
+        $validatedData = $request->validate([
+            'designation_name' => 'required|string|max:255',
             'department_id' => 'required|exists:departments,id',
             'status' => 'required|in:active,inactive',
         ]);
 
-        // Create a new designation record
-        Designation::create($request->all());
+        Designation::create($validatedData);
 
-        // Redirect back to the index page with success message
         return redirect()->route('designations.index')->with('success', 'Designation created successfully.');
     }
 

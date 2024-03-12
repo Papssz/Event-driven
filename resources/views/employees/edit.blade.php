@@ -67,6 +67,23 @@
                     <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code:</label>
                     <input type="text" id="zipcode" name="zipcode" value="{{ $employee->zipcode }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
+                <div class="mb-4">
+                    <label for="designation_id" class="block text-sm font-medium text-gray-700">Designation:</label>
+                    <select name="designation_id" id="designation_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        @foreach($designations as $designation)
+                            <option value="{{ $designation->id }}" @if($employee->designation_id == $designation->id) selected @endif>{{ $designation->designation_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="department_id" class="block text-sm font-medium text-gray-700">Department:</label>
+                    <select name="department_id" id="department_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        @foreach($departments as $department)
+                            <option value="{{ $department->id }}" @if($employee->department_id == $department->id) selected @endif>{{ $department->department_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update Employee</button>
             </form>
         </div>

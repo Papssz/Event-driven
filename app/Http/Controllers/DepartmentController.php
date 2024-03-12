@@ -7,7 +7,7 @@ use App\Models\Department;
 
 class DepartmentController extends Controller
 {
-    public function index()
+        public function index()
     {
         $departments = Department::all();
         return view('departments.index', compact('departments'));
@@ -20,12 +20,12 @@ class DepartmentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'department_name' => 'required',
+        $validatedData = $request->validate([
+            'department_name' => 'required|string|max:255',
             'status' => 'required|in:active,inactive',
         ]);
 
-        Department::create($request->all());
+        Department::create($validatedData);
 
         return redirect()->route('departments.index')->with('success', 'Department created successfully.');
     }

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Designations</h1>
-    <a href="/designations/create">Add New Designation</a>
+    <a href="{{ route('designations.create') }}">Add New Designation</a>
     <table>
         <thead>
             <tr>
@@ -28,8 +28,8 @@
                 <td>{{ $designation->department_id }}</td>
                 <td>{{ $designation->status }}</td>
                 <td>
-                    <a href="/designations/{{ $designation->id }}/edit">Edit</a>
-                    <form action="/designations/{{ $designation->id }}" method="POST">
+                    <a href="{{ route('designations.edit', $designation->id) }}">Edit</a>
+                    <form action="{{ route('designations.destroy', $designation->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
@@ -42,10 +42,11 @@
 
     <!-- Assign Designation Form -->
     <h2>Assign Designation to Employee</h2>
-    <form action="/assign-designation" method="POST">
+    <form action="{{ route('assign-designation.store') }}" method="POST">
         @csrf
-        <label for="designation_id">Designation ID:</label>
+        <label for="designation_id">Designation:</label>
         <select name="designation_id" id="designation_id">
+            <option value="">Select Designation</option> <!-- Placeholder option -->
             @foreach($designations as $designation)
             <option value="{{ $designation->id }}">{{ $designation->id }} - {{ $designation->designation_name }}</option>
             @endforeach

@@ -3,38 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departments</title>
-    <!-- Include any CSS files or frameworks here -->
+    <title>List of Departments</title>
 </head>
 <body>
-    <h1>Departments</h1>
-    <a href="/departments/create">Add New Department</a>
+    <h1>List of Departments</h1>
+
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Department Name</th>
                 <th>Status</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Loop through the departments and display each one -->
-            <!-- Example: -->
+            @foreach($departments as $department)
             <tr>
-                <td>1</td>
-                <td>Finance</td>
-                <td>Active</td>
-                <td>
-                    <a href="/departments/1/edit">Edit</a>
-                    <form action="/departments/1" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
+                <td>{{ $department->id }}</td>
+                <td>{{ $department->department_name }}</td>
+                <td>{{ $department->status }}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
+
+    <a href="{{ route('departments.create') }}" class="btn btn-primary">Add New Department</a>
+    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a> <!-- Back button -->
 </body>
 </html>
