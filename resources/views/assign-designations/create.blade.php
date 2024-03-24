@@ -17,30 +17,29 @@
             <div class="mb-4">
                 <label for="designation_id" class="block text-gray-700 text-sm font-bold mb-2">Designation:</label>
                 <select name="designation_id" id="designation_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value=""></option> <!-- Add this line for the blank option -->
                     @foreach($designations as $designation)
                         <option value="{{ $designation->id }}">{{ $designation->designation_name }}</option>
                     @endforeach
                 </select>
             </div>
 
-
-
-            <!-- Department ID Drowdown -->
+            <!-- Department ID Dropdown -->
             <div class="mb-4">
                 <label for="department_id" class="block text-gray-700 text-sm font-bold mb-2">Department:</label>
                 <select name="department_id" id="department_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value=""></option> <!-- Add this line for the blank option -->
                     @foreach($departments as $department)
                         <option value="{{ $department->id }}">{{ $department->department_name }}</option>
                     @endforeach
                 </select>
             </div>
 
-
-            
             <!-- Employee Type Dropdown -->
             <div class="mb-4">
                 <label for="employee_type" class="block text-gray-700 text-sm font-bold mb-2">Employee Type:</label>
                 <select name="employee_type" id="employee_type" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value=""></option>
                     <option value="R">Regular (R)</option>
                     <option value="PT">Part-Time (PT)</option>
                     <option value="PB">Probationary (PB)</option>
@@ -52,6 +51,7 @@
             <div class="mb-4">
                 <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status:</label>
                 <select name="status" id="status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value=""></option>
                     <option value="active">Active</option>
                     <option value="resigned">Resigned</option>
                     <option value="AWOL">AWOL</option>
