@@ -32,7 +32,8 @@ To start the Laravel application, navigate to the project directory and run the 
     ```php artisan serve```
 
 then redirect to this link route
-    ```http://127.0.0.1:8000/employees```
+    
+    http://127.0.0.1:8000/employees
 
 ## Populating data for designation and department
 
