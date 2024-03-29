@@ -205,6 +205,9 @@
                     <div class="flex flex-row justify-start gap-2.5 mt-[2.12rem]">
                         <a href="{{ route('employees.create') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ADD NEW EMPLOYEE</a>
                         <a href="{{ route('employees.details') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW EMPLOYEE DETAILS</a>
+                        <a href="{{ route('leaves.create') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">EMPLOYEE LEAVE REQUEST</a>
+                        <a href="{{ route('signatories.create') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ADD SIGNATORIES</a>
+                        <a href="{{ route('signatories.index') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW SIGNATORIES</a>
                         <!--<a href="{{ route('employees.assign-designation.create', ['emp_num' => $employee->emp_num]) }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ASSIGN DESIGNATION</a> -->
                     </div>
                 </div>
