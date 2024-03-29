@@ -21,3 +21,62 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Starting the app
+
+    http://127.0.0.1:8000/employees
+
+## To populate the data for department and designation
+
+*note* populate first department table to avoid key constraints *note*
+
+-------------------------------------------------------
+
+Department 
+
+INSERT INTO departments (department_name, status) VALUES 
+('Management', 'active'),
+('Engineering', 'active'),
+('Design', 'active');
+('Sales', 'active'),
+('Marketing', 'active'),
+('Human Resources', 'active'),
+('Finance', 'active'),
+('Information Technology', 'active'),
+('Operations', 'active'),
+('Customer Service', 'active'),
+('Research and Development', 'active'),
+('Legal', 'active'),
+('Administration', 'active');
+
+Designation
+
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Manager', d.id, 'active' FROM departments d WHERE d.department_name = 'Management';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Developer', d.id, 'active' FROM departments d WHERE d.department_name = 'Engineering';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Designer', d.id, 'active' FROM departments d WHERE d.department_name = 'Design';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Sales Manager', d.id, 'active' FROM departments d WHERE d.department_name = 'Sales';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Marketing Specialist', d.id, 'active' FROM departments d WHERE d.department_name = 'Marketing';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'HR Coordinator', d.id, 'active' FROM departments d WHERE d.department_name = 'HR';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Finance Analyst', d.id, 'active' FROM departments d WHERE d.department_name = 'Finance';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'IT Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'IT';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Operations Supervisor', d.id, 'active' FROM departments d WHERE d.department_name = 'Operations';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Customer Service Representative', d.id, 'active' FROM departments d WHERE d.department_name = 'Customer Service';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Software Engineer', d.id, 'active' FROM departments d WHERE d.department_name = 'Software Engineering';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Research Scientist', d.id, 'active' FROM departments d WHERE d.department_name = 'Research';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Legal Counsel', d.id, 'active' FROM departments d WHERE d.department_name = 'Legal';
+INSERT INTO designations (designation_name, department_id, status) 
+SELECT 'Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'Administration';
+
+
