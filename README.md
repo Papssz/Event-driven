@@ -75,9 +75,9 @@ then redirect to this link route
 
 ('Legal', 'active'),
 
-('Administration', 'active');
+('Administration', 'active');```
 
--- Designation
+```-- Designation
 
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Manager', d.id, 'active' FROM departments d WHERE d.department_name = 'Management';
@@ -119,7 +119,7 @@ INSERT INTO designations (designation_name, department_id, status)
 SELECT 'Legal Counsel', d.id, 'active' FROM departments d WHERE d.department_name = 'Legal';
 
 INSERT INTO designations (designation_name, department_id, status) 
-SELECT 'Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'Administration';
+SELECT 'Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'Administration';```
 
 
 
