@@ -21,6 +21,13 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Introduction to Tailwind CSS
+
+<img alt="Tailwind CSS" src="https://tailwindcss.com/_next/static/media/tailwindcss-mark.623d8b13b5edf3ebd5f39f84e0e3ac9b.svg">
+Tailwind CSS is a utility-first CSS framework for building custom designs. It provides low-level utility classes that let you build completely custom designs without ever leaving your HTML.
+
+To learn more about Tailwind CSS, visit their official documentation: https://tailwindcss.com/docs.
+
 ## Starting the app
 
 To start the Laravel application, navigate to the project directory and run the following command:
