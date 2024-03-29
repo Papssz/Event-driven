@@ -23,7 +23,16 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Starting the app
 
-    http://127.0.0.1:8000/employees
+To start the Laravel application, navigate to the project directory and run the following command:
+
+1ST TERMINAL SHOULD BE 
+    ```npm run dev```
+
+2ND TERMINAL SHOULD BE 
+    ```php artisan serve```
+
+then redirect to this link route
+    ```http://127.0.0.1:8000/employees```
 
 ## To populate the data for department and designation
 
