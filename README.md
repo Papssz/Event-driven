@@ -47,9 +47,9 @@ then redirect to this link route
  Before running the application, it's essential to populate the department and designation tables to avoid key constraints. Execute the following SQL queries in your database:
 
 -------------------------------------------------------
-```
-## Department
 
+## Department
+```
 INSERT INTO departments (department_name, status) VALUES 
 ('Management', 'active'),
 
@@ -78,6 +78,7 @@ INSERT INTO departments (department_name, status) VALUES
 ('Administration', 'active');
 
 -------------------------------------------------------
+```
 ```
 ## Designation
 
