@@ -76,8 +76,6 @@ INSERT INTO departments (department_name, status) VALUES
 ('Legal', 'active'),
 
 ('Administration', 'active');
-
--------------------------------------------------------
 ```
 
 ## Designation
