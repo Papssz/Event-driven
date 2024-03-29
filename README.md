@@ -34,9 +34,9 @@ To start the Laravel application, navigate to the project directory and run the 
 then redirect to this link route
     ```http://127.0.0.1:8000/employees```
 
-## To populate the data for department and designation
+## Populating data for designation and department
 
- populate first department table to avoid key constraints
+ Before running the application, it's essential to populate the department and designation tables to avoid key constraints. Execute the following SQL queries in your database:
 
 -------------------------------------------------------
 
