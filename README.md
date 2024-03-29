@@ -79,9 +79,9 @@ INSERT INTO departments (department_name, status) VALUES
 
 -------------------------------------------------------
 ```
-```
-## Designation
 
+## Designation
+```
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Manager', d.id, 'active' FROM departments d WHERE d.department_name = 'Management';
 
