@@ -34,11 +34,17 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 -- Department
 INSERT INTO departments (department_name, status) VALUES 
 ('Management', 'active'),
+
 ('Engineering', 'active'),
+
 ('Design', 'active'),
+
 ('Sales', 'active'),
+
 ('Marketing', 'active'),
+
 ('Human Resources', 'active'),
+
 ('Finance', 'active'),
 ('Information Technology', 'active'),
 ('Operations', 'active'),
