@@ -50,7 +50,7 @@ then redirect to this link route
 
 -- Department
 
-INSERT INTO departments (department_name, status) VALUES 
+```INSERT INTO departments (department_name, status) VALUES 
 ('Management', 'active'),
 
 ('Engineering', 'active'),
