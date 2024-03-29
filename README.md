@@ -27,16 +27,15 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## To populate the data for department and designation
 
-*note* populate first department table to avoid key constraints *note*
+ populate first department table to avoid key constraints
 
 -------------------------------------------------------
 
-Department 
-
+-- Department
 INSERT INTO departments (department_name, status) VALUES 
 ('Management', 'active'),
 ('Engineering', 'active'),
-('Design', 'active');
+('Design', 'active'),
 ('Sales', 'active'),
 ('Marketing', 'active'),
 ('Human Resources', 'active'),
@@ -48,8 +47,7 @@ INSERT INTO departments (department_name, status) VALUES
 ('Legal', 'active'),
 ('Administration', 'active');
 
-Designation
-
+-- Designation
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Manager', d.id, 'active' FROM departments d WHERE d.department_name = 'Management';
 INSERT INTO designations (designation_name, department_id, status) 
@@ -61,11 +59,11 @@ SELECT 'Sales Manager', d.id, 'active' FROM departments d WHERE d.department_nam
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Marketing Specialist', d.id, 'active' FROM departments d WHERE d.department_name = 'Marketing';
 INSERT INTO designations (designation_name, department_id, status) 
-SELECT 'HR Coordinator', d.id, 'active' FROM departments d WHERE d.department_name = 'HR';
+SELECT 'HR Coordinator', d.id, 'active' FROM departments d WHERE d.department_name = 'Human Resources';
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Finance Analyst', d.id, 'active' FROM departments d WHERE d.department_name = 'Finance';
 INSERT INTO designations (designation_name, department_id, status) 
-SELECT 'IT Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'IT';
+SELECT 'IT Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'Information Technology';
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Operations Supervisor', d.id, 'active' FROM departments d WHERE d.department_name = 'Operations';
 INSERT INTO designations (designation_name, department_id, status) 
@@ -73,7 +71,7 @@ SELECT 'Customer Service Representative', d.id, 'active' FROM departments d WHER
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Software Engineer', d.id, 'active' FROM departments d WHERE d.department_name = 'Software Engineering';
 INSERT INTO designations (designation_name, department_id, status) 
-SELECT 'Research Scientist', d.id, 'active' FROM departments d WHERE d.department_name = 'Research';
+SELECT 'Research Scientist', d.id, 'active' FROM departments d WHERE d.department_name = 'Research and Development';
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Legal Counsel', d.id, 'active' FROM departments d WHERE d.department_name = 'Legal';
 INSERT INTO designations (designation_name, department_id, status) 
