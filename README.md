@@ -78,3 +78,4 @@ INSERT INTO designations (designation_name, department_id, status)
 SELECT 'Administrator', d.id, 'active' FROM departments d WHERE d.department_name = 'Administration';
 
 
+
