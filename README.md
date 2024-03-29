@@ -49,6 +49,7 @@ then redirect to this link route
 -------------------------------------------------------
 
 -- Department
+
 INSERT INTO departments (department_name, status) VALUES 
 ('Management', 'active'),
 
@@ -77,6 +78,7 @@ INSERT INTO departments (department_name, status) VALUES
 ('Administration', 'active');
 
 -- Designation
+
 INSERT INTO designations (designation_name, department_id, status) 
 SELECT 'Manager', d.id, 'active' FROM departments d WHERE d.department_name = 'Management';
 
