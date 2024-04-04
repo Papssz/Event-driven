@@ -6,6 +6,10 @@ use App\Http\Controllers\DesignationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 //employee routes
 Route::get('/employees/details', [EmployeeController::class, 'showDetails'])->name('employees.details');
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');

@@ -33,7 +33,6 @@
             align-items: center;
             justify-content: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px; /* Adjust the font size as needed */
         }
 
         .searchBarPlaceHolder {
@@ -148,12 +147,12 @@
                         <div></div>
                         <!-- <div id="selectedEmployeeID"></div> -->
 
-                        <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-4" >
                             @php
                                 $counter = count($employees);
                             @endphp
                             @foreach ($employees as $employee)
-                                <div class="flex space-x-4" onclick="selectedID(this, '{{ $employee->id }}')">
+                                <div class="flex space-x-4" onclick="selectedID(this, {{ $employee->id }})">
                                     <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative">
                                         <div class="flex items-center">
                                             <!-- <div style="background-color: black; height: 85px; width: 85px; border-radius: 100%;"></div> -->
@@ -189,7 +188,7 @@
                                     <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="flex flex-col justify-center items-center">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex-shrink" onclick=>
+                                        <button type="submit" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex-shrink" onclick="return confirm('Are you sure you want to delete this employee?')">
                                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                                 <path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
                                             </svg>
@@ -204,12 +203,11 @@
                     </div>
 
                     <div class="flex flex-row justify-start gap-2.5 mt-[2.12rem]">
-                        <a href="{{ route('employees.create') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-2 px-2">ADD NEW EMPLOYEE</a>
-                        <a href="{{ route('employees.details') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW EMPLOYEE DETAILS</a>
-                        <a href="{{ route('leaves.create') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">EMPLOYEE LEAVE REQUEST</a>
-                        <a href="{{ route('signatories.create') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ADD SIGNATORIES</a>
-                        <a href="{{ route('signatories.index') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW SIGNATORIES</a>
-                        <!-- <a href="{{ route('employees.assign-designation.create', ['emp_num' => $employee->emp_num]) }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ASSIGN DESIGNATION</a> -->
+                        <a href="{{ route('employees.create') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ADD NEW EMPLOYEE</a>
+                        <a href="{{ route('employees.details', ['id' => $employees->first()->id]) }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">SEARCH EMPLOYEE DETAILS</a>
+                        <a href="{{ route('departments.create') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ADD NEW DEPARTMENT</a>
+                        <!-- <a href="{{ route('employees.details') }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW EMPLOYEE DETAILS</a>
+                        <a href="{{ route('employees.assign-designation.create', ['emp_num' => $employee->emp_num]) }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ASSIGN DESIGNATION</a> -->
                     </div>
                 </div>
             </div>
