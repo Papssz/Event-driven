@@ -122,7 +122,7 @@ SELECT 'Administrator', d.id, 'active' FROM departments d WHERE d.department_nam
 ```
 
 
-##Possible Changes
+## Possible Changes
 
 Might convert with middleware
 
