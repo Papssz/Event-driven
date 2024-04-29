@@ -41,8 +41,7 @@ then redirect to this link route
 
 ## Populating data for designation and department
 
- Before running the application, it's essential to populate the department and designation tables to avoid key constraints. Execute the following SQL queries in your database:
-
+ Before running the application, it's essential to populate the department and designation tables to avoid key constraints.
 -------------------------------------------------------
 
 
