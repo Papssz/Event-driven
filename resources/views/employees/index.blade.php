@@ -77,60 +77,6 @@
             font-family: 'Nunito', sans-serif;
         }
 
-        /* input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(46%) sepia(24%) saturate(2944%) hue-rotate(10deg) brightness(91%) contrast(87%);
-        }
-
-        input[type="date"]:focus::-webkit-calendar-picker-indicator {
-            filter: grayscale(100%);
-        } */
-
-
-        select {
-            /* background-color: rgba(165, 42, 42, 0);
-            color: #F8861E;
-            font-family: 'IBM Plex Mono', monospace;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            padding-right: 20px; adjust the padding to create space for the arrow */
-            /* background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23F8861E' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right center; */
-        }
-
-        .cropA { 
-            -webkit-clip-path: polygon(0 , 100% 0%, 80% 100%, 0% 100%);
-            /* clip-path: polygon(0 0, 100% 0, 100% 66%, 0% 100%); */
-        }
-
-        /* select:focus {
-            color: black;
-        } */
-
-        /* input[type=text]:focus {
-            background-color: #F8861E;
-            color: black;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        input[type=text]::placeholder {
-            color: #F8861E;
-        }
-
-        input[type=text]:focus::placeholder {
-            color: black;
-        }
-
-        .form-control:focus {
-            box-shadow: 0 0 0 2px #F8861E !important;
-            outline: none !important;
-        } */
-
-        .selected {
-            background-color: #e2e8f0; /* Change this to your desired background color */
-        }
-
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -138,7 +84,38 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="my-5">
+    <!-- Sidebar -->
+    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
+        <div class="flex items-center mb-8">
+            <a href="#" class="text-2xl font-bold">Employee Management</a>
+        </div>
+        <ul class="space-y-4">
+        <li>
+            <a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a>
+        </li>
+        <li>
+            <a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a>
+        </li>
+        <li>
+            <a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a>
+        </li>
+        <li>
+            <a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a>
+        </li>
+        <li>
+            <a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a>
+        </li>
+        <li>
+            <a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a>
+        </li>
+        <li>
+            <a href="#" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a>
+        </li>
+    </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="ml-64">
         <div class="container mx-auto">
             <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-size: contain;">
                 <div>
@@ -196,27 +173,14 @@
                                         </button>
                                     </form>
                                 </div>
-
-                                
-
                             @endforeach
                         </div>
-                    </div>
-
-                    <div class="flex flex-row justify-start gap-2.5 mt-[2.12rem]">
-                        <a href="{{ route('employees.create') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-2 px-2">ADD NEW EMPLOYEE</a>
-                        <a href="{{ route('employees.details') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW EMPLOYEE DETAILS</a>
-                        <a href="{{ route('leaves.create') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">EMPLOYEE LEAVE REQUEST</a>
-                        <a href="{{ route('leaves.index') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">EMPLOYEE LEAVE STATUS</a>
-                        <a href="{{ route('signatories.create') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ADD SIGNATORIES</a>
-                        <a href="{{ route('signatories.index') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">VIEW SIGNATORIES</a>
-                        <!-- <a href="{{ route('employees.assign-designation.create', ['emp_num' => $employee->emp_num]) }}" class="buttonFormat border-2 border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-4 px-4">ASSIGN DESIGNATION</a> -->
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- <script>
         function selectedID(clickedElement, employeeID) {
 
