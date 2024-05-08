@@ -6,6 +6,7 @@ use App\Http\Controllers\AssignDesignationController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\SignatoryController;
 
 Route::get('/', function () {
@@ -47,3 +48,7 @@ Route::prefix('signatories')->group(function () {
     Route::get('/create', [SignatoryController::class, 'create'])->name('signatories.create');
     Route::post('/', [SignatoryController::class, 'store'])->name('signatories.store');
 });
+
+
+Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
+Route::post('/payroll/generate', [PayrollController::class, 'generatePayroll'])->name('payroll.generate');
