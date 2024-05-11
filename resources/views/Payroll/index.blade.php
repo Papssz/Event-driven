@@ -96,7 +96,7 @@
             <li><a href="{{ route('payroll.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
         </ul>
     </nav>
-    <div class="container mt-5 ml-64"> <!-- Added ml-64 class for margin -->
+    <div class="container mt-5 ml-64">
         <h2 class="mb-4">Payroll List</h2>
         <div class="relative overflow-x-auto shadow-md sm:rounded-md">
             <table class="w-full text-sm text-left rtl:text-right text-blue-black dark:text-blue-100">
@@ -120,7 +120,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($payrolls as $payroll)
+                    @forelse ($payrolls as $payroll)
                     <tr class="text-black" style="text-transform: capitalize;">
                         <td scope="col" class="px-6 py-3">{{ $payroll->employee_id }}</td>
                         <td scope="col" class="px-6 py-3">{{ $payroll->name }}</td>
@@ -130,7 +130,11 @@
                             <a href="#" class="btn btn-info">View Details</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="5" class="px-6 py-3 text-black">No payroll records found.</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
