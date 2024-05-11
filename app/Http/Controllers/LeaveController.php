@@ -44,4 +44,16 @@ class LeaveController extends Controller
         // Redirect back with success message
         return redirect()->route('leaves.index')->with('success', 'Leave request submitted successfully.');
     }
+
+    public function destroy($id)
+    {
+        // Find the leave request by ID
+        $leaveRequest = Leave::findOrFail($id);
+        
+        // Delete the leave request
+        $leaveRequest->delete();
+        
+        // Redirect back with success message
+        return redirect()->route('leaves.index')->with('success', 'Leave request deleted successfully.');
+    }
 }
