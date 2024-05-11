@@ -139,47 +139,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
-<nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
+    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
         <div class="flex items-center mb-8">
             <a href="#" class="text-2xl font-bold">Employee Management</a>
         </div>
         <ul class="space-y-4">
-            <li>
-                <a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a>
-            </li>
-            <li>
-                <a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a>
-            </li>
-            <li>
-                <a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a>
-            </li>
-            <li>
-                <a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a>
-            </li>
-            <li>
-                <a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a>
-            </li>
-            <li>
-                <a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a>
-            </li>
-            <li>
-                <a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a>
-            </li>
-        </ul>
+        <li><a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a></li>
+        <li><a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a></li>
+        <li><a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a></li>
+        <li><a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a></li>
+        <li><a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a></li>
+        <li><a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a></li>
+        <li><a href="{{ route('payroll.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
+    </ul>
     </nav>
     <div class="flex justify-center items-center min-h-screen">
         <div class="max-w-md bg-white shadow-md rounded px-8 py-6">
             <h1 class="text-3xl font-bold mb-6">Leave Request Status</h1>
             <!-- Display leave request status -->
             @foreach ($leaveRequests as $leaveRequest)
-            <div class="mb-4">
-                <p class="text-gray-800 font-bold">Employee ID: {{ $leaveRequest->employee_id }}</p>
-                <p class="text-gray-700">Start Date: {{ $leaveRequest->start_leave }}</p>
-                <p class="text-gray-700">End Date: {{ $leaveRequest->end_leave }}</p>
-                <p class="text-gray-700">Leave Type: {{ $leaveRequest->leave_type }}</p>
+            <div class="border-b border-gray-300 py-4">
+                <p class="text-gray-800 font-bold mb-2">Employee ID: {{ $leaveRequest->employee_id }}</p>
+                <p class="text-gray-700 mb-2">Start Date: {{ $leaveRequest->start_leave }}</p>
+                <p class="text-gray-700 mb-2">End Date: {{ $leaveRequest->end_leave }}</p>
+                <p class="text-gray-700 mb-4">Leave Type: {{ $leaveRequest->leave_type }}</p>
+                <form action="{{ route('leaves.destroy', $leaveRequest->id) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                </form>
             </div>
             @endforeach
-            <a href="{{ route('employees.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Back</a>
+            <a href="{{ route('employees.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Back</a>
         </div>
     </div>
 </body>
