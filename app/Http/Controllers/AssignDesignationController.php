@@ -11,13 +11,10 @@ class AssignDesignationController extends Controller
 {
     public function create($emp_num)
     {
-        // Fetch the list of designations
         $designations = Designation::all();
         
-        // Fetch the list of departments
         $departments = Department::all();
 
-        // Pass the designations, employee number, and departments to the view
         return view('assign-designations.create', [
             'emp_num' => $emp_num,
             'designations' => $designations,
@@ -35,7 +32,7 @@ class AssignDesignationController extends Controller
         ]);
 
         AssignDesignation::create([
-            'emp_num' => $emp_num, // Use the provided employee number
+            'emp_num' => $emp_num, 
             'designation_id' => $request->designation_id,
             'employee_type' => $request->employee_type,
             'status' => $request->status,

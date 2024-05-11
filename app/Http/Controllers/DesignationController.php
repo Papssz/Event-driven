@@ -16,10 +16,8 @@ class DesignationController extends Controller
 
     public function create()
     {
-        // Fetch the list of designations from the database
         $designations = Designation::all();
         
-        // Pass the designations to the view
         return view('designations.create', ['designations' => $designations]);
     }
 
@@ -50,32 +48,25 @@ class DesignationController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate the request data
         $request->validate([
             'designation_name' => 'required',
             'department_id' => 'required|exists:departments,id',
             'status' => 'required|in:active,inactive',
         ]);
 
-        // Find the designation record
         $designation = Designation::findOrFail($id);
 
-        // Update the designation record with the new data
         $designation->update($request->all());
 
-        // Redirect back to the index page with success message
         return redirect()->route('designations.index')->with('success', 'Designation updated successfully.');
     }
 
     public function destroy($id)
     {
-        // Find the designation record
         $designation = Designation::findOrFail($id);
 
-        // Delete the designation record
         $designation->delete();
 
-        // Redirect back to the index page with success message
         return redirect()->route('designations.index')->with('success', 'Designation deleted successfully.');
     }
 }

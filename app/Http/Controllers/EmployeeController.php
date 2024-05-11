@@ -19,7 +19,6 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        //return view('employees.create');
         $randomEmpNum = mt_rand(100000, 999999);
         session()->put('randomEmpNum', $randomEmpNum);
         return view('employees.create');
@@ -30,34 +29,27 @@ class EmployeeController extends Controller
     $request->validate([
         'firstname' => 'required',
         'lastname' => 'required',
-        // Add validation rules for other fields
     ]);
 
     if (!$request->has('emp_num')) {
         $randomEmpNum = mt_rand(100000, 999999);
-        // Check if the generated emp_num already exists
         while (Employee::where('emp_num', $randomEmpNum)->exists()) {
-            // If it exists, generate a new random emp_num
             $randomEmpNum = mt_rand(100000, 999999);
         }
         $request->merge(['emp_num' => $randomEmpNum]);
     }
 
-    // Create the employee record
     $employee = Employee::create($request->all());
 
-    // Check if designation_id is present in the request
     if ($request->has('designation_id')) {
-        // Create AssignDesignation record using the relationship
         AssignDesignation::create([
-            'emp_num' => $employee->emp_num, // Fill the 'emp_num' field
+            'emp_num' => $employee->emp_num, 
             'designation_id' => $request->input('designation_id'),
             'employee_type' => $request->input('employee_type'),
             'status' => $request->input('status'),
         ]);
     }
 
-    // Redirect back to the main page with a success message
     return redirect()->route('employees.index')
         ->with('success', 'Employee created successfully.');
 }
@@ -71,9 +63,8 @@ class EmployeeController extends Controller
 
     public function update(Request $request, Employee $employee)
 {
-    // Validate the incoming request
     $validatedData = $request->validate([
-        'emp_num' => 'required|string', // Assuming 'emp_num' is required in the form
+        'emp_num' => 'required|string', 
         'firstname' => 'required|string',
         'middlename' => 'nullable|string',
         'lastname' => 'required|string',
@@ -82,41 +73,35 @@ class EmployeeController extends Controller
         'province' => 'nullable|string',
         'country' => 'nullable|string',
         'zipcode' => 'nullable|string',
-        'designation_id' => 'required|exists:designations,id', // Ensure the designation exists
-        'department_id' => 'required|exists:departments,id', // Ensure the department exists
+        'designation_id' => 'required|exists:designations,id', 
+        'department_id' => 'required|exists:departments,id', 
     ]);
 
-    // Update the employee details
     $employee->update($validatedData);
 
-    // Retrieve the existing assignDesignation record
     $assignDesignation = $employee->assignDesignation;
 
-    // If an assignDesignation record exists, update it
     if ($assignDesignation) {
         $assignDesignation->update([
             'designation_id' => $request->input('designation_id'),
         ]);
 
-        // Retrieve the designation associated with the updated employee assignment
         $designation = Designation::find($request->input('designation_id'));
 
-        // Update the department of the designation
         $designation->update([
             'department_id' => $request->input('department_id'),
         ]);
     } else {
-        // If no assignDesignation record exists, create a new one
+        
         AssignDesignation::create([
-            'emp_num' => $employee->emp_num, // Ensure 'emp_num' is filled
+            'emp_num' => $employee->emp_num, 
             'designation_id' => $request->input('designation_id'),
             'department_id' => $request->input('department_id'),
-            'employee_type' => 'R', // Assuming default employee_type is 'R' (Regular)
-            'status' => 'active', // Assuming default status is 'active'
+            'employee_type' => 'R', 
+            'status' => 'active', 
         ]);
     }
 
-    // Redirect back to the employee details page or any other desired page
     return redirect()->route('employees.index', $employee->id)->with('success', 'Employee updated successfully.');
 }
 
