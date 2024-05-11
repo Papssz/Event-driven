@@ -120,7 +120,7 @@
                 <label for="end_of_cutoff">End of Cutoff:</label>
                 <input type="date" class="form-control" id="end_of_cutoff" name="end_of_cutoff" required>
             </div>
-            <button type="submit" class="btn btn-primary">Generate Payroll</button>
+            <button type="submit" class="btn btn-primary text-black">Generate Payroll</button>
         </form>
     </div>
 </body>
