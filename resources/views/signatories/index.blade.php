@@ -136,33 +136,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
+    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
         <div class="flex items-center mb-8">
             <a href="#" class="text-2xl font-bold">Employee Management</a>
         </div>
         <ul class="space-y-4">
-            <li>
-                <a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a>
-            </li>
-            <li>
-                <a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a>
-            </li>
-            <li>
-                <a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a>
-            </li>
-            <li>
-                <a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a>
-            </li>
-            <li>
-                <a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a>
-            </li>
-            <li>
-                <a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a>
-            </li>
-            <li>
-                <a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a>
-            </li>
-        </ul>
+        <li><a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a></li>
+        <li><a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a></li>
+        <li><a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a></li>
+        <li><a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a></li>
+        <li><a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a></li>
+        <li><a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a></li>
+        <li><a href="{{ route('payroll.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
+    </ul>
     </nav>
     <div class="my-5">
         <div class="container mx-auto">
@@ -171,22 +157,27 @@
                     <h1 class="text-[1.875rem] uppercase font-bold ibm-plex-mono mb-5" style="color: black; text-shadow: 0 0 2px #888888;">VIEW SIGNATORIES</h1>
                     <div class="grid gap-5">
 
-                        <div class="flex flex-col gap-4">
-                            @foreach ($signatories as $signatory)
-                                <div class="flex space-x-4">
-                                    <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative">
-                                        <div class="flex items-center">
-                                            <!-- <div style="background-color: black; height: 85px; width: 85px; border-radius: 100%;"></div> -->
-                                            <div>
-                                                <p class="text-left mt-5 mb-2"><strong>Employee ID:</strong> {{ $signatory->employee_id }}</p>
-                                                <p class="text-left mb-2"><strong>Higher Superior:</strong> {{ $signatory->highersuperior }}</p>
-                                                <p class="text-left mb-4"><strong>Status:</strong> {{ $signatory->status }}</p>
-                                            </div>
+                    <div class="flex flex-col gap-4">
+                        @foreach ($signatories as $signatory)
+                            <div class="flex space-x-4">
+                                <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative">
+                                    <div class="flex items-center">
+                                        <!-- <div style="background-color: black; height: 85px; width: 85px; border-radius: 100%;"></div> -->
+                                        <div>
+                                            <p class="text-left mb-2"><strong>Employee ID:</strong> {{ $signatory->employee_id }}</p>
+                                            <p class="text-left mb-2"><strong>Higher Superior:</strong> {{ $signatory->highersuperior }}</p>
+                                            <p class="text-left mb-4"><strong>Status:</strong> {{ $signatory->status }}</p>
                                         </div>
                                     </div>
+                                    <form action="{{ route('signatories.destroy', $signatory->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="absolute top-0 right-0 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                    </form>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
+                    </div>
                     </div>
 
                     <div class="flex flex-row justify-start gap-2.5 mt-[1.12rem]">
