@@ -9,7 +9,6 @@ class Department extends Model
 {
     protected $fillable = ['department_name', 'status'];
 
-    // Define the relationship with designations
     public function designations()
     {
         return $this->hasMany(Designation::class, 'department_id');

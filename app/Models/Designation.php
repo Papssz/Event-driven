@@ -21,9 +21,7 @@ class Designation extends Model
     {
         parent::boot();
 
-        // Listen for the created event
         static::created(function ($designation) {
-            // Create a corresponding entry in the departments table
             Department::create([
                 'department_name' => $designation->designation_name,
                 'status' => $designation->status,

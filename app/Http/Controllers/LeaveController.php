@@ -11,7 +11,6 @@ class LeaveController extends Controller
     
         public function index()
     {
-        // Retrieve leave requests from the database
         $leaveRequests = Leave::all();
 
         foreach ($leaveRequests as $leaveRequest) {
@@ -19,7 +18,6 @@ class LeaveController extends Controller
             $leaveRequest->end_leave = Carbon::parse($leaveRequest->end_leave)->format('Y-m-d');
         }    
 
-        // Pass leave requests data to the view
         return view('leaves.index', compact('leaveRequests'));
     }
 
@@ -35,25 +33,19 @@ class LeaveController extends Controller
             'start_leave' => 'required|date',
             'end_leave' => 'required|date|after_or_equal:start_leave',
             'leave_type' => 'required',
-            // Add validation rules as needed
         ]);
 
-        // Create leave record in the database
         $leave = Leave::create($validatedData);
 
-        // Redirect back with success message
         return redirect()->route('leaves.index')->with('success', 'Leave request submitted successfully.');
     }
 
     public function destroy($id)
     {
-        // Find the leave request by ID
         $leaveRequest = Leave::findOrFail($id);
         
-        // Delete the leave request
         $leaveRequest->delete();
         
-        // Redirect back with success message
         return redirect()->route('leaves.index')->with('success', 'Leave request deleted successfully.');
     }
 }
