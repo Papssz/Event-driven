@@ -76,7 +76,7 @@ class PayrollController extends Controller
         return redirect()->route('payroll.index')->with('success', 'Payroll generated successfully');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         // Find the payroll entry by its ID
         $payroll = Payroll::findOrFail($id);
