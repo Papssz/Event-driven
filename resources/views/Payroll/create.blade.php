@@ -11,15 +11,16 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Generate Payroll</h2>
-        <form action="{{ route('payrolls.store') }}" method="POST">
+        <form action="{{ route('payroll.store') }}" method="POST">
             @csrf
-            <div class="form-group">
-                <label for="employee_id">Employee ID:</label>
-                <input type="text" class="form-control" id="employee_id" name="employee_id" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+            <div class="mb-4">
+                <label for="employee_id" class="labelname block text-gray-700 text-sm font-semibold mb-2">Employee Name:</label>
+                <select id="employee_id" name="employee_id" class="form-control" required>
+                    <option value=""></option>
+                    @foreach($employees as $employee)
+                        <option value="{{ $employee->id }}">{{ $employee->firstname }} {{ $employee->middlename }} {{ $employee->lastname }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="start_of_cutoff">Start of Cutoff:</label>

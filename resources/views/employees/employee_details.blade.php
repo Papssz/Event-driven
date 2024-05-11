@@ -253,8 +253,6 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                            @else
-                                            <p>Employee details not found.</p>
                                             @endisset
                                         </tbody>
                                     </table>

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('payrolls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained()->onDelete('cascade');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_of_cutoff');
+            $table->date('end_of_cutoff');
             // Add more columns as needed
             $table->timestamps();
         });

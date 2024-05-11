@@ -46,4 +46,45 @@ class PayrollController extends Controller
         // Optionally, you can return a response indicating success
         return response()->json(['message' => 'Payroll generated successfully'], 200);
     }
+
+    public function create()
+    {
+        // Retrieve all employees from the database
+        $employees = Employee::all();
+
+        // Pass the retrieved employees to the view for display
+        return view('payroll.create', ['employees' => $employees]);
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'employee_id' => 'required',
+            'start_of_cutoff' => 'required|date',
+            'end_of_cutoff' => 'required|date',
+        ]);
+
+        // Store the payroll data
+        Payroll::create([
+            'employee_id' => $request->input('employee_id'),
+            'start_of_cutoff' => $request->input('start_of_cutoff'),
+            'end_of_cutoff' => $request->input('end_of_cutoff'),
+        ]);
+
+        // Redirect back to the payroll index page
+        return redirect()->route('payroll.index')->with('success', 'Payroll generated successfully');
+    }
+
+    public function destroy($id)
+    {
+        // Find the payroll entry by its ID
+        $payroll = Payroll::findOrFail($id);
+
+        // Delete the payroll entry
+        $payroll->delete();
+
+        // Redirect back to the payroll index page
+        return redirect()->route('payroll.index')->with('success', 'Payroll deleted successfully');
+    }
 }

@@ -11,7 +11,7 @@ class Payroll extends Model
 
     protected $fillable = [
         'employee_id',
-        'start_date',
-        'end_date',
+        'start_of_cutoff',
+        'end_of_cutoff',
     ];
 }

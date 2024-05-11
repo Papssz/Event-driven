@@ -49,5 +49,8 @@ Route::post('signatories', [SignatoryController::class, 'store'])->name('signato
 Route::delete('signatories/{signatory}', [SignatoryController::class, 'destroy'])->name('signatories.destroy');
 
 // Payroll Routes
-Route::get('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
-Route::post('/payroll/generate', [PayrollController::class, 'generatePayroll'])->name('payroll.generate');
+Route::get('payroll', [PayrollController::class, 'index'])->name('payroll.index');
+Route::post('payroll/generate', [PayrollController::class, 'generatePayroll'])->name('payroll.generate');
+Route::get('payroll/create', [PayrollController::class, 'create']) ->name('payroll.create'); 
+Route::post('payroll', [PayrollController::class, 'store'])->name('payroll.store');
+Route::delete('payroll/{payroll}', [PayrollController::class, 'delete'])->name('payroll.destroy');
