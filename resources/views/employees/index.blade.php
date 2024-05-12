@@ -90,6 +90,10 @@
             border-radius:10px;
         }
 
+        html{
+            background-color:#292E37;
+        }
+
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -114,11 +118,11 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="ml-64">
-        <div class="container mx-auto">
-            <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-size: contain;">
+    <div class="ml-64" style="background-color:#292E37;">
+        <div class="container mx-auto" style="background-color:#292E37;">
+            <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-color:#292E37;background-size: contain;">
                 <div>
-                    <h1 class="text-[1.875rem] uppercase font-bold ibm-plex-mono" style="color: black; text-shadow: 0 0 2px #888888;">Employee List</h1>
+                    <h1 class="text-[1.875rem] font-bold ibm-plex-mono" style=" color:rgb(226, 226, 226); text-shadow: 0 0 2px #888888;font-family: Inter;">Employee List</h1>
                     <div class="grid gap-5">
 
                         <div></div>
@@ -130,7 +134,8 @@
                             @endphp
                             @foreach ($employees as $employee)
                                 <div class="flex space-x-4" onclick="selectedID(this, '{{ $employee->id }}')">
-                                    <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative">
+                                    <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative" style=" border: 3px #313843 solid;
+                                    border-radius:10px;  color:rgb(226, 226, 226);">
                                         <div class="flex items-center">
                                             <!-- <div style="background-color: black; height: 85px; width: 85px; border-radius: 100%;"></div> -->
                                             <div class=>
