@@ -127,7 +127,7 @@
                         <td>{{ $payroll->start_of_cutoff }}</td>
                         <td>{{ $payroll->end_of_cutoff }}</td>
                         <td>
-                            <a href="#" class="btn btn-info">View Payslip</a>
+                            <a href="{{ route('payroll.viewPayslip', $payroll->id) }}" class="btn btn-info">View Payslip</a>
                             <form action="{{ route('payroll.destroy', $payroll->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')

@@ -14,30 +14,7 @@ class PayrollController extends Controller
 
         return view('payroll.index', ['payrolls' => $payrolls]);
     }
-    /*
-    public function generatePayroll(Request $request)
-    {
-        $request->validate([
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-        ]);
-
-        $employees = Employee::all(); 
-
-        foreach ($employees as $employee) {
-            $payrollData = [
-                'employee_id' => $employee->id,
-                'employee_name' => $employee->name,
-                'start_date' => $request->input('start_date'),
-                'end_date' => $request->input('end_date'),
-            ];
-
-            Payroll::create($payrollData);
-        }
-
-        return response()->json(['message' => 'Payroll generated successfully'], 200);
-    }
-    */
+    
     public function create()
     {
         $employees = Employee::all();
@@ -70,4 +47,39 @@ class PayrollController extends Controller
 
         return redirect()->route('payroll.index')->with('success', 'Payroll deleted successfully');
     }
+
+    public function viewPaySlip($id)
+    {
+        $payroll = Payroll::findOrFail($id);
+
+        $employee = Employee::find($payroll->employee_id);
+
+        return view('payroll.viewPayslip', ['payroll' => $payroll, 'employee' => $employee]);
+
+    }
+
+    /*
+    public function generatePayroll(Request $request)
+    {
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
+
+        $employees = Employee::all(); 
+
+        foreach ($employees as $employee) {
+            $payrollData = [
+                'employee_id' => $employee->id,
+                'employee_name' => $employee->name,
+                'start_date' => $request->input('start_date'),
+                'end_date' => $request->input('end_date'),
+            ];
+
+            Payroll::create($payrollData);
+        }
+
+        return response()->json(['message' => 'Payroll generated successfully'], 200);
+    }
+    */
 }
