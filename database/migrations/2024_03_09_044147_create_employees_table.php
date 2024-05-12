@@ -20,6 +20,10 @@ class CreateEmployeesTable extends Migration
             $table->string('province');
             $table->string('country');
             $table->string('zipcode');
+            $table->string('sss_no');
+            $table->string('philhealth_no');
+            $table->string('tin_no');
+            $table->date('employment_start_date');
             $table->timestamps();
         });
 

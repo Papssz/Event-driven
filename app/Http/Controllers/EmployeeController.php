@@ -73,6 +73,10 @@ class EmployeeController extends Controller
         'province' => 'nullable|string',
         'country' => 'nullable|string',
         'zipcode' => 'nullable|string',
+        'sss_no' => 'nullable|string',
+        'philhealth_no' => 'nullable|string',
+        'tin_no' => 'nullable|string',
+        'employment_start_date' => 'required|date',
         'designation_id' => 'required|exists:designations,id', 
         'department_id' => 'required|exists:departments,id', 
     ]);

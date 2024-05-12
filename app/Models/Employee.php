@@ -19,11 +19,16 @@ class Employee extends Model
         'province',
         'country',
         'zipcode',
-
+        'hourly_rate',
+        'sss_no',
+        'philhealth_no',
+        'tin_no',
+        'employment_start_date',
     ];
 
     public function assignDesignation()
     {
         return $this->hasOne(AssignDesignation::class, 'emp_num', 'emp_num');
     }
+
 }

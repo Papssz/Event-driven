@@ -119,6 +119,22 @@
                     <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code:</label>
                     <input type="text" id="zipcode" name="zipcode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
+                <div class="mb-4">
+                    <label for="sss_no" class="block text-sm font-medium text-gray-700">SSS No:</label>
+                    <input type="text" id="sss_no" name="sss_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="philhealth_no" class="block text-sm font-medium text-gray-700">Philhealth No:</label>
+                    <input type="text" id="philhealth_no" name="philhealth_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="tin_no" class="block text-sm font-medium text-gray-700">Tin No:</label>
+                    <input type="text" id="tin_no" name="tin_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+                <div class="mb-4">
+                    <label for="employment_start_date" class="block text-sm font-medium text-gray-700">employment Start Date:</label>
+                    <input type="date" id="employment_start_date" name="employment_start_date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create Employee</button>
             </form>
         </div>
