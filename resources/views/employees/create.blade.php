@@ -60,6 +60,31 @@
         nav ul li a:hover {
             background-color: #2d3748; /* Adjust hover background color */
         }
+
+        html{
+            background-color:#292E37;
+        }
+
+        label{
+            color:rgb(226, 226, 226);
+        }
+
+        input{
+            background-color:#4a5261;
+            color:rgb(226, 226, 226);
+            border-color:#6a7c9e;
+        }
+        #columns{
+            display:flex;
+            flex-direction: row;
+        }
+        #columnA{
+            width:50%;
+            margin-right:2vh;
+        }
+        #columnB{
+            width:50%;
+        }
     </style>
 </head>
 <body>
@@ -77,64 +102,73 @@
         <li><a href="{{ route('payroll.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
     </ul>
     </nav>
-    <div class="my-5">
+    <div class="my-5" style="margin-top:10vh; margin-left:20vw;">
         <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold mb-3">Add Employee</h1>
+            <h1 class="text-3xl font-semibold mb-3" style="color:rgb(226, 226, 226); font-family:Inter;">Add Employee</h1>
             <form action="{{ route('employees.store') }}" method="POST">
                 @csrf
+                <div id="columns">
+                <div id="columnA">
                 <div class="mb-4">
-                    <label for="emp_num" class="block text-sm font-medium text-gray-700">Employee Number:</label>
+                    <label for="emp_num" class="block text-sm font-medium ">Employee Number:</label>
                     <input type="text" id="emp_num" name="emp_num" value="{{ session('randomEmpNum') }}" readonly class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 
                 </div>
                 <div class="mb-4">
-                    <label for="firstname" class="block text-sm font-medium text-gray-700">First Name:</label>
+                    <label for="firstname" class="block text-sm font-medium ">First Name:</label>
                     <input type="text" id="firstname" name="firstname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="middlename" class="block text-sm font-medium text-gray-700">Middle Name:</label>
+                    <label for="middlename" class="block text-sm font-medium ">Middle Name:</label>
                     <input type="text" id="middlename" name="middlename" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="lastname" class="block text-sm font-medium text-gray-700">Last Name:</label>
+                    <label for="lastname" class="block text-sm font-medium ">Last Name:</label>
                     <input type="text" id="lastname" name="lastname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="address_line" class="block text-sm font-medium text-gray-700">Address Line:</label>
+                    <label for="address_line" class="block text-sm font-medium ">Address Line:</label>
                     <input type="text" id="address_line" name="address_line" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="brgy" class="block text-sm font-medium text-gray-700">Barangay:</label>
+                    <label for="brgy" class="block text-sm font-medium ">Barangay:</label>
                     <input type="text" id="brgy" name="brgy" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="province" class="block text-sm font-medium text-gray-700">Province:</label>
+                    <label for="province" class="block text-sm font-medium ">Province:</label>
                     <input type="text" id="province" name="province" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
+                
+
+                </div>
+
+                 <div id="columnB">
                 <div class="mb-4">
-                    <label for="country" class="block text-sm font-medium text-gray-700">Country:</label>
+                    <label for="country" class="block text-sm font-medium ">Country:</label>
                     <input type="text" id="country" name="country" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code:</label>
+                    <label for="zipcode" class="block text-sm font-medium ">Zip Code:</label>
                     <input type="text" id="zipcode" name="zipcode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="sss_no" class="block text-sm font-medium text-gray-700">SSS No:</label>
+                    <label for="sss_no" class="block text-sm font-medium ">SSS No:</label>
                     <input type="text" id="sss_no" name="sss_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="philhealth_no" class="block text-sm font-medium text-gray-700">Philhealth No:</label>
+                    <label for="philhealth_no" class="block text-sm font-medium ">Philhealth No:</label>
                     <input type="text" id="philhealth_no" name="philhealth_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="tin_no" class="block text-sm font-medium text-gray-700">Tin No:</label>
+                    <label for="tin_no" class="block text-sm font-medium ">Tin No:</label>
                     <input type="text" id="tin_no" name="tin_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
                 <div class="mb-4">
-                    <label for="employment_start_date" class="block text-sm font-medium text-gray-700">employment Start Date:</label>
+                    <label for="employment_start_date" class="block text-sm font-medium ">employment Start Date:</label>
                     <input type="date" id="employment_start_date" name="employment_start_date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
+            </div>
+        </div>
                 <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create Employee</button>
             </form>
         </div>
