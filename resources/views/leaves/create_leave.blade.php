@@ -199,6 +199,8 @@
                                 <option value="Sick">Sick</option>
                                 <option value="Maternity">Maternity</option>
                                 <option value="Paternity">Paternity</option>
+                                <option value="Med Leave">Medical Leave</option>
+                                <option value="Personal leave">Personal Leave</option>
                             </select>
                         </div>
                                         
