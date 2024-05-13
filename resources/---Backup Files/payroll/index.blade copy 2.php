@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Request Status</title>
+    <title>Payroll</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     @vite('resources/css/app.css')
 
     <!-- Font Styles via googlefonts -->
@@ -20,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
 
     <style>
         .navigation-text {
@@ -49,7 +51,7 @@
 
         .labelname {
             font-size: 1.15rem;
-            font-family: 'Poppins', monospace;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
         .placeholderfont {
@@ -110,72 +112,11 @@
             border-radius:10px;
         }
 
-        input[type=text], input[type=date], input[type=email], input[type=password], textarea {
-            background-color: rgba(165, 42, 42, 0);
-            color: black;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        /* input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(46%) sepia(24%) saturate(2944%) hue-rotate(10deg) brightness(91%) contrast(87%);
-        }
-
-        input[type="date"]:focus::-webkit-calendar-picker-indicator {
-            filter: grayscale(100%);
-        } */
-
-
-        select {
-            /* background-color: rgba(165, 42, 42, 0);
-            color: #F8861E;
-            font-family: 'IBM Plex Mono', monospace;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            padding-right: 20px; adjust the padding to create space for the arrow */
-            /* background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23F8861E' viewBox='0 0 24 24'><path d='M7 10l5 5 5-5z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right center; */
-        }
-
-        .cropA { 
-            -webkit-clip-path: polygon(0 , 100% 0%, 80% 100%, 0% 100%);
-            /* clip-path: polygon(0 0, 100% 0, 100% 66%, 0% 100%); */
-        }
-
-        /* select:focus {
-            color: black;
-        } */
-
-        /* input[type=text]:focus {
-            background-color: #F8861E;
-            color: black;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        input[type=text]::placeholder {
-            color: #F8861E;
-        }
-
-        input[type=text]:focus::placeholder {
-            color: black;
-        }
-
-        .form-control:focus {
-            box-shadow: 0 0 0 2px #F8861E !important;
-            outline: none !important;
-        } */
-
-        .selected {
-            background-color: #e2e8f0; /* Change this to your desired background color */
-        }
-
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-
 <body>
 
     <!-- Canvas -->
@@ -200,37 +141,43 @@
         <!-- Main Content -->
         <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-size: contain;">
             <div>
-                <h1 class="text-2xl uppercase font-bold cabin" style="color: black;">Leave Request Status</h1>
+                <h1 class="text-2xl uppercase font-bold cabin" style="color: black;">PAYROLL LIST</h1>
                 <div class="grid gap-5">
 
                     <div></div>
 
                     <div class="flex flex-col gap-4">
-                        @foreach ($leaveRequests as $leaveRequest)
+                        @foreach ($payrolls as $payroll)
                             <div class="flex space-x-4">
                                 <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative">
                                     <div class="flex items-center">
                                         <!-- <div style="background-color: black; height: 85px; width: 85px; border-radius: 100%;"></div> -->
                                         <div class=>
-                                            <p class="text-left mb-2 font-bold">Employee ID: {{ $leaveRequest->employee_id }}</p>
-                                            <p class="text-left mb-2">Start Date: {{ $leaveRequest->start_leave }}</p>
-                                            <p class="text-left mb-2">End Date: {{ $leaveRequest->end_leave }}</p>
-                                            <p class="text-left mb-2">Leave Type: {{ $leaveRequest->leave_type }}</p>
-                                            <p class="text-left mb-2">Status: {{ $leaveRequest->status }}</p>
-                                            
+                                            <p class="text-left mb-2 font-bold">Employee ID: {{ $payroll->employee_id }}</p>
+                                            <p class="text-left mb-2">Name: 
+                                                @php
+                                                    $employee = \App\Models\Employee::find($payroll->employee_id);
+                                                    if ($employee) {
+                                                        echo $employee->firstname . ' ' . $employee->middlename . ' ' . $employee->lastname;
+                                                    } else {
+                                                        echo 'Employee not found';
+                                                    }
+                                                @endphp
+                                            </p>
+                                            <p class="text-left mb-2">Start of Cutoff: {{ $payroll->start_of_cutoff }}</p>
+                                            <p class="text-left mb-2">End of Cutoff: {{ $payroll->end_of_cutoff }}</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <form action="{{ route('leaves.approve', $leaveRequest->id) }}" method="POST" class="flex flex-col justify-center items-center">
-                                    @csrf
-                                    <button type="submit" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">Approve</button>
-                                </form>
+                                <div class="flex flex-col justify-center items-center">
+                                    <a href="{{ route('payroll.viewPayslip', $payroll->id) }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">VIEW PAYSLIP</a>
+                                </div>
 
-                                <form action="{{ route('leaves.destroy', $leaveRequest->id) }}" method="POST" class="flex flex-col justify-center items-center">
+                                <form action="{{ route('payroll.destroy', $payroll->id) }}" method="POST" class="flex flex-col justify-center items-center">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-[#292E37] hover:bg-[#15151D] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex-shrink" onclick=>
+                                    <button type="submit" class="bg-[#292E37] hover:bg-[#15151D] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex-shrink" onclick="return confirm('Are you sure you want to delete this payroll?')">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                             <path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
                                         </svg>
@@ -243,6 +190,10 @@
 
                             </div>
                         @endforeach
+                    </div>
+
+                    <div class="flex flex-row justify-start gap-2.5 mt-[1.12rem]">
+                        <a href="{{ route('payroll.create') }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">ADD PAYROLL</a>
                     </div>
 
                 </div> 

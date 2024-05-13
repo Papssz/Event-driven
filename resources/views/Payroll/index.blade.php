@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payroll</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     @vite('resources/css/app.css')
 
     <!-- Font Styles via googlefonts -->
@@ -22,8 +21,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
-
     <style>
+        .navigation-text {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .placeholder-black::placeholder {
+            color: black;
+        }
+
+        .buttonFormat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px; /* Adjust the font size as needed */
+        }
+
+        .searchBarPlaceHolder {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .circle {
+            width: 40px;
+            border-radius: 5rem;
+        }
+
+        .labelname {
+            font-size: 1.15rem;
+            font-family: 'Poppins', monospace;
+        }
+
+        .placeholderfont {
+            /* color: #F8861E; */
+            font-size: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .sections {
+            font-size: 1.5rem;
+            font-family: 'Sarabun', sans-serif;
+            color: #686576; 
+        }
+
         .cabin {
             font-family: "Cabin", sans-serif;
             font-weight: 400;
@@ -42,49 +82,8 @@
             font-style: normal;
         }
 
-        .navigation-text {
-            font-family: 'Bebas Neue', sans-serif;
-        }
-
-        .placeholder-black::placeholder {
-            color: black;
-        }
-
-        .buttonFormat {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .searchBarPlaceHolder {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .circle {
-            width: 40px;
-            border-radius: 5rem;
-        }
-
-        .labelname {
-            font-size: 1.15rem;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .placeholderfont {
-            /* color: #F8861E; */
-            font-size: 1rem;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        .sections {
-            font-size: 1.5rem;
-            font-family: 'Sarabun', sans-serif;
-            color: #686576; 
-        }
-
         h1 {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'Grand Hotel', cursive;
         }
 
         h3 {
@@ -176,6 +175,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
+
 <body>
 
     <!-- Canvas -->
@@ -199,38 +199,21 @@
 
         <!-- Main Content -->
         <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-size: contain;">
-        
-            <div class="grid gap-5">
+            <div>
+                <h1 class="text-2xl uppercase font-bold cabin" style="color: black;">PAYROLL LIST</h1>
+                <div class="grid gap-5">
 
-                <h1 class="text-2xl uppercase font-bold cabin" style="color: black;">PAYROLL</h1>
-                <div class="flex flex-col gap-4">
-                    <div class="flex space-x-4">
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-md">
-                            <table class="w-full text-sm text-left rtl:text-right text-blue-black dark:text-blue-100">
-                                <thead class="text-xs text-white bg-[#292E37] border-b border-blue-400 dark:text-white">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">
-                                            Employee ID
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Start of Cutoff
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            End of Cutoff
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Action
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                    @forelse ($payrolls as $payroll)
-                                        <tr class="text-black" style="text-transform: capitalize;">
-                                            <td scope="col" class="px-6 py-3">{{ $payroll->employee_id }}</td>
-                                            <td scope="col" class="px-6 py-3">
+                    <div></div>
+
+                    <div class="flex flex-col gap-4">
+                        @foreach ($payrolls as $payroll)
+                            <div class="flex space-x-4">
+                                <div class="flex flex-row border-black border rounded py-4 px-4 w-full leading-tight focus:outline-none focus:border-black relative">
+                                    <div class="flex items-center">
+                                        <!-- <div style="background-color: black; height: 85px; width: 85px; border-radius: 100%;"></div> -->
+                                        <div class=>
+                                            <p class="text-left mb-2 font-bold">Employee ID: {{ $payroll->employee_id }}</p>
+                                            <p class="text-left mb-2">Name: 
                                                 @php
                                                     $employee = \App\Models\Employee::find($payroll->employee_id);
                                                     if ($employee) {
@@ -239,35 +222,42 @@
                                                         echo 'Employee not found';
                                                     }
                                                 @endphp
-                                            </td>
-                                            <td scope="col" class="px-6 py-3">{{ $payroll->start_of_cutoff }}</td>
-                                            <td scope="col" class="px-6 py-3">{{ $payroll->end_of_cutoff }}</td>
-                                            <td scope="col" class="px-6 py-3">
-                                                <a href="{{ route('payroll.viewPayslip', $payroll->id) }}" class="btn btn-info">View Payslip</a>
-                                                <form action="{{ route('payroll.destroy', $payroll->id) }}" method="POST" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger text-black" onclick="return confirm('Are you sure you want to delete this payroll?')">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="5" class="px-6 py-3 text-black">No payroll records found.</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                                            </p>
+                                            <p class="text-left mb-2">Start of Cutoff: {{ $payroll->start_of_cutoff }}</p>
+                                            <p class="text-left mb-2">End of Cutoff: {{ $payroll->end_of_cutoff }}</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col justify-center items-center">
+                                    <a href="{{ route('payroll.viewPayslip', $payroll->id) }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">PAYROLL</a>
+                                </div>
+
+                                <form action="{{ route('payroll.destroy', $payroll->id) }}" method="POST" class="flex flex-col justify-center items-center">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-[#292E37] hover:bg-[#15151D] text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline flex-shrink" onclick="return confirm('Are you sure you want to delete this payroll?')">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M8.6 2.6A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4c0-.5.2-1 .6-1.4ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </button>
+                                </form>
+
+                                <div class="flex flex-col justify-center items-center">
+                                    <a href="{{ route('employees.index') }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">BACK</a>
+                                </div>
+
+                            </div>
+                        @endforeach
                     </div>
-                </div>
 
+                    <div class="flex flex-row justify-start gap-2.5 mt-[1.12rem]">
+                        <a href="{{ route('payroll.create') }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">ADD PAYROLL</a>
+                    </div>
+
+                </div> 
             </div>
-
-            <div class="flex flex-row justify-end gap-2.5 mt-[2.12rem]">
-                <a href="{{ route('employees.index') }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-5 text-sm">BACK TO EMPLOYEE LIST</a>
-            </div>
-
         </div>
 
     </div>
