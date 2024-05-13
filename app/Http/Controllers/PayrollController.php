@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Payroll;
+use Carbon\Carbon;
 
 class PayrollController extends Controller
 {
@@ -48,14 +49,31 @@ class PayrollController extends Controller
         return redirect()->route('payroll.index')->with('success', 'Payroll deleted successfully');
     }
 
+    
     public function viewPaySlip($id)
     {
         $payroll = Payroll::findOrFail($id);
-
         $employee = Employee::find($payroll->employee_id);
 
-        return view('payroll.viewPayslip', ['payroll' => $payroll, 'employee' => $employee]);
+        // Calculate the number of working days within the cutoff period
+        $start = Carbon::parse($payroll->start_of_cutoff);
+        $end = Carbon::parse($payroll->end_of_cutoff);
+        $workingDays = $start->diffInDaysFiltered(function (Carbon $date) {
+            return !$date->isWeekend();
+        }, $end);
 
+        // Assuming 8 working hours per day for demonstration purposes
+        $hoursPerDay = 8;
+
+        // Calculate total hours worked during the cutoff period
+        $hoursWorked = $workingDays * $hoursPerDay;
+        $hourlyRate = 52;
+        $totalEarnings = $hoursWorked * $hourlyRate;
+        $fixedDeduction = 200;
+        $withholdingTax = 350;
+        $netPay = $totalEarnings - $fixedDeduction - $withholdingTax;
+
+        return view('payroll.viewPayslip', compact('payroll', 'employee', 'totalEarnings', 'fixedDeduction', 'withholdingTax', 'netPay'));
     }
 
     /*

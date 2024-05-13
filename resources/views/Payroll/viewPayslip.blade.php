@@ -32,6 +32,29 @@
                 @endif
             </p>
             <p>Date of Hire: {{ $employee->employment_start_date }}</p>
+            <p>Net Hourly Rate @ P52</p>
+        </div>
+
+        <!-- 3rd Group: Deductions -->
+        <div class="mb-4">
+            <h4>Deductions</h4>
+            <p>Fixed Deduction: ${{ $fixedDeduction }}</p>
+            <p>Withholding Tax: ${{ $withholdingTax }}</p>
+            <p>SSS -</p>
+            <P>Philhealth -</P>
+        </div>
+
+        <!-- 4th Group: Earnings -->
+        <div class="mb-4">
+            <h4>Earnings</h4>
+            <p>Total Earnings: ${{ $totalEarnings }}</p>
+        </div>
+
+        <!-- 5th Group: Net Pay -->
+        <div class="mb-4">
+            <h4>Net Pay</h4>
+            <p>Total Deductions: ${{ $fixedDeduction }}</p>
+            <p>Net Pay: ${{ $netPay }}</p>
         </div>
 
         <!-- Back Button -->
