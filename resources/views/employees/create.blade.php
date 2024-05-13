@@ -168,7 +168,7 @@
                                 <label for="firstname" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     First Name
                                 </label>
-                                <input type="text" id="firstname" name="firstname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="First Name">
+                                <input type="text" id="firstname" name="firstname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
                         
@@ -177,7 +177,7 @@
                                 <label for="middlename" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Middle Name
                                 </label>
-                                <input type="text" id="middlename" name="middlename" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Middle Name">
+                                <input type="text" id="middlename" name="middlename" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -186,7 +186,7 @@
                                 <label for="lastname" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Last Name
                                 </label>
-                                <input type="text" id="lastname" name="lastname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Last Name">
+                                <input type="text" id="lastname" name="lastname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                                 <label for="address_line" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Address
                                 </label>
-                                <input type="text" id="address_line" name="address_line" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Grove Street, House No. 666">
+                                <input type="text" id="address_line" name="address_line" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -209,7 +209,7 @@
                                 <label for="brgy" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Barangay
                                 </label>
-                                <input type="text" id="brgy" name="brgy" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Talomo">
+                                <input type="text" id="brgy" name="brgy" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -218,7 +218,7 @@
                                 <label for="province" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Province
                                 </label>
-                                <input type="text" id="province" name="province" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Davao del Sur">
+                                <input type="text" id="province" name="province" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -227,7 +227,7 @@
                                 <label for="country" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Country
                                 </label>
-                                <input type="text" id="country" name="country" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Philippines">
+                                <input type="text" id="country" name="country" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -236,7 +236,7 @@
                                 <label for="zipcode" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     Zip Code
                                 </label>
-                                <input type="text" id="zipcode" name="zipcode" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="8000">
+                                <input type="text" id="zipcode" name="zipcode" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
                     </div>
@@ -250,7 +250,7 @@
                                 <label for="sss_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     SSS No.
                                 </label>
-                                <input type="text" id="sss_no" name="sss_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="SSS No.">
+                                <input type="text" id="sss_no" name="sss_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -259,7 +259,7 @@
                                 <label for="philhealth_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     PhilHealth No.
                                 </label>
-                                <input type="text" id="philhealth_no" name="philhealth_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="PhilHealth No.">
+                                <input type="text" id="philhealth_no" name="philhealth_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -268,7 +268,7 @@
                                 <label for="pag_ibig" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                                     PAG-IBIG No.
                                 </label>
-                                <input type="text" id="pag_ibig" name="pag_ibig" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="PAG-IBIG No.">
+                                <input type="text" id="pag_ibig" name="pag_ibig" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -277,7 +277,7 @@
                                 <label for="tin_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                     Tin No.
                                 </label>
-                                <input type="text" id="tin_no" name="tin_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Tin No.">
+                                <input type="text" id="tin_no" name="tin_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
                     </div>
