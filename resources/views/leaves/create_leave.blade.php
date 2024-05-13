@@ -199,7 +199,7 @@
                 </div>
             </div>
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0 border border-[#15151D] rounded-b">
-                <form action="{{ route('employees.store') }}" method="POST">
+                <form action="{{ route('leaves.store') }}" method="POST">
                     @csrf
 
                     <h6 class="text-blueGray-400 text-sm mt-6 mb-6 font-bold uppercase">Employee ID</h6>
