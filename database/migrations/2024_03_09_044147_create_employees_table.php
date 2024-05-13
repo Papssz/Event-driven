@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('country');
             $table->string('zipcode');
             $table->string('sss_no');
-            $table->string('pag-ibig');
+            $table->string('pag_ibig');
             $table->string('philhealth_no');
             $table->string('tin_no');
             $table->date('employment_start_date');
