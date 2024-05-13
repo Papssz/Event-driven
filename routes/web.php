@@ -41,6 +41,7 @@ Route::get('leaves/create', [LeaveController::class, 'create'])->name('leaves.cr
 Route::post('leaves', [LeaveController::class, 'store'])->name('leaves.store');
 Route::get('leaves', [LeaveController::class, 'index'])->name('leaves.index');
 Route::delete('leaves/{leave}', [LeaveController::class, 'destroy'])->name('leaves.destroy');
+Route::post('leaves/{id}/approve', [LeaveController::class, 'approve'])->name('leaves.approve');
 
 // Signatories routes
 Route::get('signatories', [SignatoryController::class, 'index'])->name('signatories.index');

@@ -40,6 +40,17 @@ class LeaveController extends Controller
         return redirect()->route('leaves.index')->with('success', 'Leave request submitted successfully.');
     }
 
+    public function approve($id)
+    {
+        $leaveRequest = Leave::findOrFail($id);
+        
+        $leaveRequest->status = 'approved';
+        $leaveRequest->save();
+        
+        return redirect()->route('leaves.index')->with('success', 'Leave request approved successfully.');
+    }
+
+
     public function destroy($id)
     {
         $leaveRequest = Leave::findOrFail($id);

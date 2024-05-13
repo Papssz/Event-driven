@@ -216,6 +216,13 @@
                                             <p class="text-left mb-2">Start Date: {{ $leaveRequest->start_leave }}</p>
                                             <p class="text-left mb-2">End Date: {{ $leaveRequest->end_leave }}</p>
                                             <p class="text-left mb-2">Leave Type: {{ $leaveRequest->leave_type }}</p>
+                                            <p class="text-left mb-2">Status: {{ $leaveRequest->status }}</p>
+                                            @if ($leaveRequest->status == 'pending')
+                                                <form action="{{ route('leaves.approve', $leaveRequest->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Approve</button>
+                                                </form>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
