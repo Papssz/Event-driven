@@ -169,89 +169,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
+
 <body>
-    
-    <!-- Canvas -->
-    <div class="grid grid-cols-5 bg-[#FFFFFF] grid-row-4">
-
-        <!-- Sidebar -->
-        <div class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full" style="background-color:#15151D;  color:rgb(226, 226, 226); justify-content:center;  min-width:15vw">
-            <div class="flex items-center mb-8" style="justify-content:center; text-align:center; border: 3px rgb(75, 78, 82) solid; background-color:#292E37; padding:2vh; border-radius:10px; margin-top:4vh; margin-bottom:6vh; ">
-                <a href="#" class="uppercase text-xl font-bold cabin-sketch-bold" style=" text-align:center; font-weight:bold">Employee Manager</a>
-            </div>
-            <ul class="space-y-4"  >
-                <li><a href="{{ route('employees.create') }}" id="blocky" class=" block hover:bg-black text-white font-bold py-2 px-2" >Add New Employee</a></li>
-                <li><a href="{{ route('employees.details') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a></li>
-                <li><a href="{{ route('leaves.create') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a></li>
-                <li><a href="{{ route('leaves.index') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a></li>
-                <li><a href="{{ route('signatories.create') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a></li>
-                <li><a href="{{ route('signatories.index') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a></li>
-                <li><a href="{{ route('payroll.index') }}"id="blocky" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
-            </ul>
+    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
+        <div class="flex items-center mb-8">
+            <a href="#" class="text-2xl font-bold">Employee Management</a>
         </div>
+        <ul class="space-y-4">
+        <li><a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a></li>
+        <li><a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a></li>
+        <li><a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a></li>
+        <li><a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a></li>
+        <li><a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a></li>
+        <li><a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a></li>
+        <li><a href="{{ route('payroll.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
+    </ul>
+    </nav>
+    <!-- Canvas -->
+    <div class="flex bg-[#f0f2f5] justify-center">
 
-        <!-- Main Content -->
-        <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-size: contain;">
-            
-            <div class="rounded-t bg-[#292E37] mb-0 px-6 py-6">
-                <div class="text-center flex justify-between">
-                    <h6 class="text-blueGray-700 text-xl font-bold uppercase text-white cabin">Add Signatories</h6>
+        <!-- Create Signatories -->
+        <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-image: url('logos/background-with-grid-bw.png'); background-size: contain;">
+            <div>
+                <h1 class="text-[1.875rem] uppercase font-bold ibm-plex-mono" style="color: black; text-shadow: 0 0 2px #888888;">ADD SIGNATORIES</h1>
+                <hr class="mt-[1.94rem] mb-[2.31rem]"/>
+                <div class="grid gap-5">
+
+                    @if(Session::has('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        {{Session::get('success')}}
+                    </div>
+                    @endif
+
+                    <form action="{{ route('signatories.store') }}" method="POST">
+                        @csrf
+
+                        <!-- Employee ID -->
+                        <div class="mb-4">
+                            <label for="employee_id" class="labelname block text-gray-700 text-sm font-semibold mb-2">Employee ID:</label>
+                            <input type="text" id="employee_id" name="employee_id" class="form-control text-black border border-black rounded w-full py-3 px-3 input[type=text] text-base leading-tight focus:outline-none focus:border-black">
+                        </div>
+
+                        <!-- Higher Superior -->
+                        <div class="mb-4">
+                            <label for="highersuperior" class="labelname block text-gray-700 text-sm font-semibold mb-2">Higher Superior:</label>
+                            <select id="highersuperior" name="highersuperior" class="form-control text-black border border-black rounded w-full py-3 px-3 input[type=text] text-base leading-tight focus:outline-none focus:border-black">
+                                <option value=""></option>
+                                @foreach($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->firstname }} {{ $employee->middlename }} {{ $employee->lastname }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="mb-6">
+                            <label for="status" class="labelname block text-gray-700 text-sm font-semibold mb-2">Status:</label>
+                            <select id="status" name="status" class="form-control text-black border border-black rounded w-full py-3 px-3 input[type=text] text-base leading-tight focus:outline-none focus:border-black">
+                                <option value=""></option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Submit -->
+                        <div class="flex flex-row justify-start gap-2.5 mt-[1.12rem]">
+                            <button type="submit" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-3 px-3">SUBMIT</button>
+                            <a href="{{ route('employees.index') }}" class="buttonFormat border rounded-md border-black bg-rgba(165, 42, 42, 0) hover:bg-black text-black hover:text-white font-bold py-3 px-3">BACK</a>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="flex-auto px-4 lg:px-10 py-10 pt-0 border border-[#15151D] rounded-b">
-                <form action="{{ route('signatories.store') }}" method="POST">
-                    @csrf
-
-                    <h6 class="text-blueGray-400 text-sm mt-6 mb-6 font-bold uppercase">Employee ID</h6>
-                    <div class="mt-3 mb-6"></div>
-                    
-                    <div class="flex flex-wrap">
-                        <div class="w-full lg:w-1/4 px-4">
-                            <div class="relative w-full mb-3">
-                                <input type="text" id="employee_id" name="employee_id" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="mt-6 border-b-1 border-blueGray-300">
-                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Higher Superior</h6>
-
-                    <div class="flex flex-wrap">
-                        <div class="w-full lg:w-1/4 px-4">
-                            <div class="relative w-full mb-3">
-                                <select id="highersuperior" name="highersuperior" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
-                                    <option value=""></option>
-                                    @foreach($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->firstname }} {{ $employee->middlename }} {{ $employee->lastname }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="mt-6 border-b-1 border-blueGray-300">
-                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Status</h6>
-
-                    <div class="flex flex-wrap">
-                        <div class="w-full lg:w-1/4 px-4">
-                            <div class="relative w-full mb-3">
-                                <select id="status" name="status" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
-                                    <option value=""></option>
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="mt-6 border-b-1 border-gray-500">
-
-                    <div class="flex flex-row justify-end gap-2.5 mt-[1.12rem]">
-                        <button type="submit" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-5">SUBMIT</button>
-                        <a href="{{ route('employees.index') }}" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-4">BACK</a>
-                    </div>
-
-                </form>
             </div>
         </div>
 

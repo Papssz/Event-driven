@@ -5,173 +5,305 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Employee</title>
     @vite('resources/css/app.css')
+
+    <!-- Font Styles via googlefonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&family=Commissioner:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Sarabun&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
     <style>
-        /* Additional CSS for enhanced input styling */
-        input[type="text"],
-        textarea {
-            border: 1px solid #d2d6dc;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            transition: border-color 0.3s ease;
-            width: 100%;
+        .navigation-text {
+            font-family: 'Bebas Neue', sans-serif;
         }
 
-        input[type="text"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #4f46e5;
+        .placeholder-black::placeholder {
+            color: black;
         }
 
-        input#emp_num {
-            background-color: #f3f4f6;
-            cursor: not-allowed;
+        .buttonFormat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px; /* Adjust the font size as needed */
         }
 
-        /* Navbar CSS */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 15rem; /* Adjust width as needed */
-            background-color: #4a5568; /* Adjust background color */
-            padding: 1rem;
+        .searchBarPlaceHolder {
+            font-family: 'Roboto', sans-serif;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .circle {
+            width: 40px;
+            border-radius: 5rem;
         }
 
-        nav ul li {
-            margin-bottom: 1rem;
+        .labelname {
+            font-size: 1.15rem;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
-        nav ul li a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
+        .placeholderfont {
+            /* color: #F8861E; */
+            font-size: 1rem;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
-        nav ul li a:hover {
-            background-color: #2d3748; /* Adjust hover background color */
+        .sections {
+            font-size: 1.5rem;
+            font-family: 'Sarabun', sans-serif;
+            color: #686576; 
         }
 
-        html{
+        .cabin {
+            font-family: "Cabin", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .cabin-sketch-regular {
+            font-family: "Cabin Sketch", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .cabin-sketch-bold {
+            font-family: "Cabin Sketch", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        h1 {
+            font-family: 'Grand Hotel', cursive;
+        }
+
+        h3 {
+            color: #686576;
+            font-family: 'Castoro', serif;
+        }
+
+        input[type=text], input[type=date], input[type=email], input[type=password], textarea {
+            background-color: rgba(165, 42, 42, 0);
+            color: black;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        #blocky{
+            color:rgb(226, 226, 226);
+            font-family:Nunito;
+            font-size:.75em;
+            font-weight:900;
+        }
+
+        #blocky:hover{
             background-color:#292E37;
+            border: 3px #313843 solid;
+            border-radius:10px;
         }
 
-        label{
-            color:rgb(226, 226, 226);
-        }
-
-        input{
-            background-color:#4a5261;
-            color:rgb(226, 226, 226);
-            border-color:#6a7c9e;
-        }
-        #columns{
-            display:flex;
-            flex-direction: row;
-        }
-        #columnA{
-            width:50%;
-            margin-right:2vh;
-        }
-        #columnB{
-            width:50%;
-        }
     </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
-    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full">
-        <div class="flex items-center mb-8">
-            <a href="#" class="text-2xl font-bold">Employee Management</a>
+    
+    <!-- Canvas -->
+    <div class="grid grid-cols-5 bg-[#FFFFFF] grid-row-4">
+
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full" style="background-color:#15151D;  color:rgb(226, 226, 226); justify-content:center;  min-width:15vw">
+            <div class="flex items-center mb-8" style="justify-content:center; text-align:center; border: 3px rgb(75, 78, 82) solid; background-color:#292E37; padding:2vh; border-radius:10px; margin-top:4vh; margin-bottom:6vh; ">
+                <a href="#" class="uppercase text-xl font-bold cabin-sketch-bold" style=" text-align:center; font-weight:bold">Employee Manager</a>
+            </div>
+            <ul class="space-y-4"  >
+                <li><a href="{{ route('employees.create') }}" id="blocky" class=" block hover:bg-black text-white font-bold py-2 px-2" >Add New Employee</a></li>
+                <li><a href="{{ route('employees.details') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a></li>
+                <li><a href="{{ route('leaves.create') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a></li>
+                <li><a href="{{ route('leaves.index') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a></li>
+                <li><a href="{{ route('signatories.create') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a></li>
+                <li><a href="{{ route('signatories.index') }}" id="blocky"class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a></li>
+                <li><a href="{{ route('payroll.index') }}"id="blocky" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
+            </ul>
         </div>
-        <ul class="space-y-4">
-        <li><a href="{{ route('employees.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add New Employee</a></li>
-        <li><a href="{{ route('employees.details') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Employee</a></li>
-        <li><a href="{{ route('leaves.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Request</a></li>
-        <li><a href="{{ route('leaves.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Leave Status</a></li>
-        <li><a href="{{ route('signatories.create') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Add Signatories</a></li>
-        <li><a href="{{ route('signatories.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">View Signatories</a></li>
-        <li><a href="{{ route('payroll.index') }}" class="block hover:bg-black text-white font-bold py-2 px-2">Employee Payroll</a></li>
-    </ul>
-    </nav>
-    <div class="my-5" style="margin-top:10vh; margin-left:20vw;">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-semibold mb-3" style="color:rgb(226, 226, 226); font-family:Inter;">Add Employee</h1>
-            <form action="{{ route('employees.store') }}" method="POST">
-                @csrf
-                <div id="columns">
-                <div id="columnA">
-                <div class="mb-4">
-                    <label for="emp_num" class="block text-sm font-medium ">Employee Number:</label>
-                    <input type="text" id="emp_num" name="emp_num" value="{{ session('randomEmpNum') }}" readonly class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 
-                </div>
-                <div class="mb-4">
-                    <label for="firstname" class="block text-sm font-medium ">First Name:</label>
-                    <input type="text" id="firstname" name="firstname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="middlename" class="block text-sm font-medium ">Middle Name:</label>
-                    <input type="text" id="middlename" name="middlename" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="lastname" class="block text-sm font-medium ">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="address_line" class="block text-sm font-medium ">Address Line:</label>
-                    <input type="text" id="address_line" name="address_line" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="brgy" class="block text-sm font-medium ">Barangay:</label>
-                    <input type="text" id="brgy" name="brgy" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="province" class="block text-sm font-medium ">Province:</label>
-                    <input type="text" id="province" name="province" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                
-
-                </div>
-
-                 <div id="columnB">
-                <div class="mb-4">
-                    <label for="country" class="block text-sm font-medium ">Country:</label>
-                    <input type="text" id="country" name="country" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="zipcode" class="block text-sm font-medium ">Zip Code:</label>
-                    <input type="text" id="zipcode" name="zipcode" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="sss_no" class="block text-sm font-medium ">SSS No:</label>
-                    <input type="text" id="sss_no" name="sss_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="philhealth_no" class="block text-sm font-medium ">Philhealth No:</label>
-                    <input type="text" id="philhealth_no" name="philhealth_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="tin_no" class="block text-sm font-medium ">Tin No:</label>
-                    <input type="text" id="tin_no" name="tin_no" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="employment_start_date" class="block text-sm font-medium ">employment Start Date:</label>
-                    <input type="date" id="employment_start_date" name="employment_start_date" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        <!-- Main Content -->
+        <div class="col-start-2 my-[2.36rem] mx-[3rem] col-span-4 bg-[#FFFFFF] py-[2.81rem] px-[2.84rem] mt-[2.38rem]" style="background-size: contain;">
+            
+            <div class="rounded-t bg-[#292E37] mb-0 px-6 py-6">
+                <div class="text-center flex justify-between">
+                    <h6 class="text-blueGray-700 text-xl font-bold uppercase text-white cabin">Add Employee</h6>
                 </div>
             </div>
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0 border border-[#15151D] rounded-b">
+                <form action="{{ route('employees.store') }}" method="POST">
+                    @csrf
+
+                    <h6 class="text-blueGray-400 text-sm mt-6 mb-6 font-bold uppercase">Employee Number</h6>
+                    <div class="mt-3 mb-6"></div>
+                    
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-1/4 px-4">
+                            <div class="relative w-full mb-3">
+                                <input type="text" id="emp_num" name="emp_num" value="{{ session('randomEmpNum') }}" readonly class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-6 border-b-1 border-blueGray-300">
+                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">User Information</h6>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-1/3 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="firstname" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    First Name
+                                </label>
+                                <input type="text" id="firstname" name="firstname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="First Name">
+                            </div>
+                        </div>
+                        
+                        <div class="w-full lg:w-1/3 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="middlename" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Middle Name
+                                </label>
+                                <input type="text" id="middlename" name="middlename" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Middle Name">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/3 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="lastname" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Last Name
+                                </label>
+                                <input type="text" id="lastname" name="lastname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Last Name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-6 border-b-1 border-blueGray-300">
+                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Contact Information</h6>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-12/12 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="address_line" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Address
+                                </label>
+                                <input type="text" id="address_line" name="address_line" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Grove Street, House No. 666">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="brgy" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Barangay
+                                </label>
+                                <input type="text" id="brgy" name="brgy" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Talomo">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="province" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Province
+                                </label>
+                                <input type="text" id="province" name="province" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Davao del Sur">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="country" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Country
+                                </label>
+                                <input type="text" id="country" name="country" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Philippines">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="zipcode" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    Zip Code
+                                </label>
+                                <input type="text" id="zipcode" name="zipcode" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="8000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-6 border-b-1 border-blueGray-300">
+                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Government ID (Philhealth, SSS, Tin Numbers)</h6>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="sss_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    SSS No.
+                                </label>
+                                <input type="text" id="sss_no" name="sss_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="SSS No.">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="philhealth_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    PhilHealth No.
+                                </label>
+                                <input type="text" id="philhealth_no" name="philhealth_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="PhilHealth No.">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="pagibig_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
+                                    PAG-IBIG No.
+                                </label>
+                                <input type="text" id="pagibig_no" name="pagibig_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="PAG-IBIG No.">
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="relative w-full mb-3">
+                                <label for="tin_no" label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
+                                    Tin No.
+                                </label>
+                                <input type="text" id="tin_no" name="tin_no" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Tin No.">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-6 border-b-1 border-blueGray-300">
+                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Employment Start Date</h6>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full lg:w-1/4 px-4">
+                            <div class="relative w-full mb-3">
+                                <input type="date" id="employment_start_date" name="employment_start_date" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-6 border-b-1 border-gray-500">
+
+                    <div class="flex flex-row justify-end gap-2.5 mt-[1.12rem]">
+                        <button type="submit" class="buttonFormat border rounded-md border-black bg-[#292E37] text-white hover:bg-[#15151D] text-black hover:text-white font-bold py-3 px-5">SUBMIT</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create Employee</button>
-            </form>
-        </div>
+
     </div>
+
 </body>
 </html>
