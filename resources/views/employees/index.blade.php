@@ -102,10 +102,9 @@
 
 <body class="font-sans antialiased">
     <!-- Sidebar -->
-    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full" style="background-color:#21262D;  color:rgb(226, 226, 226); justify-content:center;  width:15vw">
-        <div class="flex items-center mb-8" style="justify-content:center; text-align:center; border-bottom: 3px rgb(75, 78, 82) solid;  padding:2vh; margin-top:4vh; margin-bottom:6vh; border-top-left-radius:10px; border-top-right-radius:10px;">
-            <img src="{{ asset('icons/users.png') }}" alt="tag" style="margin-right:8px;">
-            <a href="#" class="" style=" text-align:left; font-family:Inter; font-size:1em; font-weight:800">Employee Management</a>
+    <nav class="bg-gray-800 text-white w-64 py-6 px-4 fixed top-0 left-0 h-full" style="background-color:#21262D;  color:rgb(226, 226, 226); justify-content:center;  min-width:15vw">
+        <div class="flex items-center mb-8" style="justify-content:center; text-align:center; border: 3px rgb(75, 78, 82) solid; background-color:#292E37; padding:2vh; border-radius:10px; margin-top:4vh; margin-bottom:6vh; ">
+            <a href="#" class="text-2xl font-bold" style=" text-align:center; font-family:Inter; font-size:2em; font-weight:bold">E.D.P</a>
         </div>
         <ul class="space-y-4"  >
         <li><a href="{{ route('employees.create') }}" id="blocky" class=" block hover:bg-black text-white font-bold py-2 px-2" >Add New Employee</a></li>
