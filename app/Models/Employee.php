@@ -21,6 +21,7 @@ class Employee extends Model
         'zipcode',
         'hourly_rate',
         'sss_no',
+        'pag_ibig',
         'philhealth_no',
         'tin_no',
         'employment_start_date',

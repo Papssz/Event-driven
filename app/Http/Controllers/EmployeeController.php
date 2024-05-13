@@ -74,6 +74,7 @@ class EmployeeController extends Controller
         'country' => 'nullable|string',
         'zipcode' => 'nullable|string',
         'sss_no' => 'nullable|string',
+        'pag_ibig' => 'nullable|string',
         'philhealth_no' => 'nullable|string',
         'tin_no' => 'nullable|string',
         'employment_start_date' => 'required|date',

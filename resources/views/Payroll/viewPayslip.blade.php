@@ -15,6 +15,7 @@
             <h4>Personal Information</h4>
             <p>Employee Name: {{ $employee->firstname }} {{ $employee->middlename }} {{ $employee->lastname }}</p>
             <p>SSS no: {{ $employee->sss_no }}</p>
+            <p>Pag-ibig no: {{ $employee->pag_ibig }}</p>
             <p>Philhealth no: {{ $employee->philhealth_no }}</p>
             <p>Tin no: {{ $employee->tin_no }}</p>
         </div>
