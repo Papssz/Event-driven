@@ -241,7 +241,7 @@
                                         <p class="text-left mb-6">Total Earnings: ${{ $totalEarnings }}</p>
 
                                         <p class="text-left mb-2 font-bold">Net Pay</p>
-                                        <p class="text-left mb-2">Total Deductions: ${{ $fixedDeduction }}</p>
+                                        <p class="text-left mb-2">Total Deductions: ${{ $fixedDeduction + $withholdingTax }}</p>
                                         <p class="text-left mb-2">Net Pay: ${{ $netPay }}</p>
                                     </div>
                                 </div>

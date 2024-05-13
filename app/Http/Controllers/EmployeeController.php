@@ -63,26 +63,16 @@ class EmployeeController extends Controller
 
     public function update(Request $request, Employee $employee)
 {
-    $validatedData = $request->validate([
-        'emp_num' => 'required|string', 
-        'firstname' => 'required|string',
-        'middlename' => 'nullable|string',
-        'lastname' => 'required|string',
-        'address_line' => 'nullable|string',
-        'brgy' => 'nullable|string',
-        'province' => 'nullable|string',
-        'country' => 'nullable|string',
-        'zipcode' => 'nullable|string',
-        'sss_no' => 'nullable|string',
-        'pag_ibig' => 'nullable|string',
-        'philhealth_no' => 'nullable|string',
-        'tin_no' => 'nullable|string',
-        'employment_start_date' => 'required|date',
-        'designation_id' => 'required|exists:designations,id', 
-        'department_id' => 'required|exists:departments,id', 
-    ]);
-
-    $employee->update($validatedData);
+    $employee->firstname = $request->input('firstname');
+    $employee->middlename = $request->input('middlename');
+    $employee->lastname = $request->input('lastname');
+    $employee->address_line = $request->input('address_line');
+    $employee->brgy = $request->input('brgy');
+    $employee->province = $request->input('province');
+    $employee->country = $request->input('country');
+    $employee->zipcode = $request->input('zipcode');
+    
+    $employee->save();
 
     $assignDesignation = $employee->assignDesignation;
 

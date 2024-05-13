@@ -246,33 +246,33 @@
                     <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Designation</h6>
 
                     <div class="flex flex-wrap">
-                        <div class="w-full lg:w-1/4 px-4">
-                            <div class="relative w-full mb-3">
-                                <select name="designation_id" id="designation_id" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
-                                    <option value="">Select Designation</option>
-                                    @foreach($designations as $designation)
-                                        <option value="{{ $designation->id }}" {{ $employee->designation_id == $designation->id ? 'selected' : '' }}>{{ $designation->designation_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                    <div class="w-full lg:w-1/4 px-4">
+                        <div class="relative w-full mb-3">
+                            <select name="designation_id" id="designation_id" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
+                                <option value=""></option>
+                                @foreach($designations as $designation)
+                                    <option value="{{ $designation->id }}" {{ $employee->assignDesignation ? ($employee->assignDesignation->designation_id == $designation->id ? 'selected' : '') : '' }}>{{ $designation->designation_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
+                </div>
 
-                    <hr class="mt-6 border-b-1 border-blueGray-300">
-                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Department</h6>
+                <hr class="mt-6 border-b-1 border-blueGray-300">
+                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">Department</h6>
 
-                    <div class="flex flex-wrap">
-                        <div class="w-full lg:w-1/4 px-4">
-                            <div class="relative w-full mb-3">
-                                <select name="department_id" id="department_id" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
-                                    <option value="">Select Department</option>
-                                    @foreach($departments as $department)
-                                        <option value="{{ $department->id }}" {{ $employee->department_id == $department->id ? 'selected' : '' }}>{{ $department->department_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                <div class="flex flex-wrap">
+                    <div class="w-full lg:w-1/4 px-4">
+                        <div class="relative w-full mb-3">
+                            <select name="department_id" id="department_id" class="border-0 px-3 py-3 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 text-gray-500">
+                                <option value=""></option>
+                                @foreach($departments as $department)
+                                    <option value="{{ $department->id }}" {{ $employee->assignDesignation ? ($employee->assignDesignation->designation->department_id == $department->id ? 'selected' : '') : '' }}>{{ $department->department_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
+                </div>
 
                     <hr class="mt-6 border-b-1 border-gray-500">
 
