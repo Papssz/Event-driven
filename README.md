@@ -35,14 +35,7 @@ To start the Laravel application, navigate to the project directory and run the 
 2ND TERMINAL SHOULD BE 
     ```php artisan serve```
 
-then redirect to this link route
-    
-    http://127.0.0.1:8000/employees
-
 
 -------------------------------------------------------
 
 
-## Possible Changes
-
-Change profession
